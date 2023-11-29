@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="html2canvas.js"></script>
+    <script src="jsPdf.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Programas de programación</h1>
+        <div>
+            <button><a href="index.html">Inicio</a></button>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            <h1>Cuadro Comparativo</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Aspecto</th>
+                        <th>React</th>
+                        <th>JSX</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Lenguaje</td>
+                        <td>Es una biblioteca de JavaScript utilizada para construir interfaces de usuario. Proporciona
+                            una estructura para desarrollar aplicaciones web interactivas de manera eficiente.
+                        </td>
+                        <td>es una extensión de JavaScript que permite escribir HTML dentro de archivos de JavaScript.
+                            Aunque parece una combinación de HTML y JavaScript, en realidad se transforma a llamadas de
+                            funciones de React.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sintaxis</td>
+                        <td>Utiliza componentes que representan partes independientes y reutilizables de la interfaz.
+                            Trabaja con el Virtual DOM para actualizar solo los componentes modificados, lo que mejora
+                            el rendimiento</td>
+                        <td>Facilita la escritura de código más legible y eficiente para la construcción de interfaces
+                            de usuario en React. Permite la mezcla de lógica y marcado visual dentro del mismo archivo.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Finalidad</td>
+                        <td>Se enfoca en la construcción de aplicaciones web interactivas y de una sola página (Single
+                            Page Applications, SPAs). Facilita la creación de interfaces de usuario complejas y
+                            dinámicas.
+                        </td>
+                        <td>simplifica la creación de componentes en React al proporcionar una sintaxis que se asemeja a
+                            HTML. Mejora la legibilidad y la eficiencia al escribir código para interfaces de usuario.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Uso</td>
+                        <td>React se emplea comúnmente en el desarrollo de aplicaciones web modernas. Permite una
+                            estructura modular y una gestión eficiente del estado de la aplicación.
+                        </td>
+                        <td>se utiliza comúnmente en aplicaciones desarrolladas con React para definir la estructura y
+                            el aspecto visual de los componentes.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <section id="react-info">
+            <div>
+                <h2>
+                    ¿Qué son clases en React?
+                </h2>
+                <p>
+                    En React, las clases son un tipo de componente que se define como una clase de JavaScript que
+                    extiende
+                    la clase React.Component. Los componentes de clase tienen acceso a una serie de métodos y
+                    propiedades
+                    que les permiten controlar su ciclo de vida, manejar eventos y acceder al estado del componente.
+                </p>
+            </div>
+            <div>
+
+                <h2>
+                    Principales eventos de React
+                </h2>
+                <h3>Los principales eventos de React son los siguientes:</h3>
+                <div>
+                    <h4>Eventos de mouse:</h4>
+                    <p>
+                        onClick: Se produce cuando el usuario hace clic en un elemento.
+                        onMouseMove: Se produce cuando el usuario mueve el cursor sobre un elemento.
+                        onMouseOut: Se produce cuando el usuario sale del elemento con el cursor.
+                        onMouseOver: Se produce cuando el usuario entra en el elemento con el cursor.
+                    </p>
+                </div>
+                <div>
+                    <h4>Eventos de teclado:</h4>
+                    <p>
+                        onKeyPress: Se produce cuando el usuario presiona una tecla.
+                        onKeyDown: Se produce cuando el usuario presiona una tecla.
+                        onKeyUp: Se produce cuando el usuario suelta una tecla.
+                    </p>
+                </div>
+                <div>
+                    <h4>Eventos de formulario:</h4>
+                    <p>
+                        onChange: Se produce cuando el valor de un elemento de formulario cambia.
+                        onSubmit: Se produce cuando el usuario envía un formulario.
+                        onReset: Se produce cuando el usuario restablece un formulario.
+                    </p>
+                </div>
+                <div>
+                    <h4>Eventos de otros elementos:</h4>
+                    <p>
+                        onScroll: Se produce cuando el usuario desplaza la página.
+                        onResize: Se produce cuando el usuario cambia el tamaño de la ventana del navegador.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <button onclick="generatePDF()">Generar PDF</button>
+    </main>
+
+    <script type="text/javascript">
+        function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF('l', 'px', [1920, 1080]);
+            let pdfjs = document.querySelector('#react-info');
+
+            doc.html(pdfjs, {
+                callback: function (doc) {
+                    doc.save("newpdf.pdf");
+                },
+                x: 12,
+                y: 12
+            });
+        }
+    </script>
+</body>
+
+</html>
